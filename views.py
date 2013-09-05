@@ -8,7 +8,10 @@ import gctest.feeds as feeds
 from random import sample
 
 def index(request):
-    feeds.pull_feed()
+    """
+    Displays a random 10 apps and developers and the latest news.
+    """
+    feeds.pull_feed() # Will invoke news updates (better as cron?)
     apps = App.objects.all()
     if apps.count() > 10:
         rand_apps = sample(xrange(1, apps.count()), 10)
@@ -32,6 +35,9 @@ class DeveloperListView(generic.ListView):
     model = Developer
 
 def app(request, app_id):
+    """
+    Displays the app including all the builds and the developers.
+    """
     app = get_object_or_404(App, pk=app_id)
     builds = Build.objects.filter(app=app_id)
     developers = Developer.objects.filter(apps=app_id)

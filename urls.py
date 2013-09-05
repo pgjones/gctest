@@ -1,6 +1,6 @@
 from django.conf.urls import patterns, url
 
-from gctest import views
+from gctest import views, views_api
 
 urlpatterns = patterns('',
                        url(r'^$', views.index, name='index'),
@@ -22,4 +22,10 @@ urlpatterns = patterns('',
                        url(r'^app/new/$', views.new_app, name='new_app'),
                        url(r'^developer/new/$', views.new_developer, name='new_developer'),
                        url(r'^build/new/$', views.new_build, name='new_build'),
+
+                       url(r'^app/api/$', views_api.app_list),
+                       url(r'^app/api/$', views_api.build_list),
+
+                       url(r'^app/api/(?P<app_id>\d+)/$', views_api.app_detail),
+                       url(r'^build/api/(?P<build_id>\d+)/$', views_api.build_detail),
 )
