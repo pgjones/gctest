@@ -1,0 +1,36 @@
+{% extends 'gctest/base.html' %}
+{% block head_title %}Apps{% endblock %}
+
+{% block content %}
+<h2>{{ app.name }}</h2>
+<p>Current build : {{ app.current_build }}</p>
+
+<h3>Builds</h3>
+<table class="table table-bordered">
+<thead>
+<th>Build</th>
+</thead>
+<tbody>
+{% for build in build_list %}
+<tr>
+<td>{{ build }}</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+
+<h3>Developers</h3>
+<table class="table table-bordered">
+<thead>
+<th>Name</th>
+</thead>
+<tbody>
+{% for developer in developer_list %}
+<tr>
+<td>{{ developer }}</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+<button class="btn btn btn-success" type="button" onClick="location.href='{% url 'new_build' %}'">new build</button>
+{% endblock %}

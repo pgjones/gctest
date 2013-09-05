@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>{% block head_title %}{% endblock %}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="http://getbootstrap.com/2.3.2/assets/css/bootstrap.css" rel="stylesheet">
+<!-- <link href=/static/css/bootstrap.min.css" rel="stylesheet"> -->
+<div class="container">
+  <div class="masthead">
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container">
+        <ul class="nav">
+        <li><a href="{% url 'index' %}">Index</a></li>
+        <li><a href="{% url 'apps' %}">Apps</a></li>
+        <li><a href="{% url 'developers' %}">Developers</a></li>
+        </ul>
+        </div>
+      </div>
+    </div><!-- /.navbar -->
+  </div><!-- /.masthead -->
+{% block content %}
+
+{% endblock %}
+</div>
+</body>
+</html>

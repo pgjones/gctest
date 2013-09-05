@@ -1,0 +1,42 @@
+{% extends 'gctest/base.html' %}
+{% block head_title %}Apps{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="span4">
+    <h3>Random Apps</h3>
+    <table class="table table-bordered">
+      <thead>
+        <th>Name</th>
+        <th>Released?</th>
+      </thead>
+      <tbody>
+        {% for app in app_list %}
+        <tr>
+          <td><a href="{% url 'app' app.pk %}">{{ app.name }}</a></td>
+          <td>{% if app.released %}Yes{% else %}No{% endif %}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <div class="span4">
+    <h3>Random Developers</h3>
+    <table class="table table-bordered">
+      <thead>
+        <th>Name</th>
+        <th>Email</th>
+      </thead>
+      <tbody>
+        {% for developer in developer_list %}
+        <tr>
+          <td><a href="{% url 'developer' developer.pk %}">{{ developer.name }}</a></td>
+          <td>{{ developer.email }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>    
+  </div>
+  <div class="span4">...</div>
+</div>
+{% endblock %}

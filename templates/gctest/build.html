@@ -1,0 +1,8 @@
+{% extends 'gctest/base.html' %}
+{% block head_title %}Build{% endblock %}
+
+{% block content %}
+<h2>{{ build.version }}</h2>
+<p>App : {{ build.app }}</p>
+<p>Current? : {% if build.current %}Yes{% else %}No{% endif %}</p>
+{% endblock %}

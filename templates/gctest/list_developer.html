@@ -1,0 +1,23 @@
+{% extends 'gctest/base.html' %}
+{% block head_title %}Developers{% endblock %}
+
+{% block content %}
+<table class="table table-bordered">
+<thead>
+<th>Name</th>
+<th>Email</th>
+<th></th><th></th>
+</thead>
+<tbody>
+{% for developer in developer_list %}
+<tr>
+<td><a href="{% url 'developer' developer.pk %}">{{ developer.name }}</a></td>
+<td>{{ developer.email }}</td>
+<td><button class="btn btn-warning" type="button" onClick="location.href='{% url 'edit_developer' developer.pk %}'">edit</button></td>
+<td><button class="btn btn-danger" type="button" onClick="location.href='{% url 'delete_developer' developer.pk %}'">delete</button></td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+<button class="btn btn btn-success" type="button" onClick="location.href='{% url 'new_developer' %}'">new</button>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'gctest/base.html' %}
+{% block head_title %}Developer{% endblock %}
+
+{% block content %}
+<h2>{{ developer.name }}</h2>
+<p>Email : {{ developer.email }}</p>
+
+<h3>Apps</h3>
+<table class="table table-bordered">
+<thead>
+<th>Name</th>
+</thead>
+<tbody>
+{% for app in developer.apps.all %}
+<tr>
+<td>{{ app }}</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+{% endblock %}

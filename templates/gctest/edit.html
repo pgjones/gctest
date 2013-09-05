@@ -1,0 +1,13 @@
+{% extends 'gctest/base.html' %}
+{% block head_title %}Edit{% endblock %}
+
+{% block content %}
+{% if form %}
+<form action="{% url view_url form.instance.pk %}" method="post">{% csrf_token %}
+{{ form.as_p }}
+<input type="submit" value="Submit" />
+</form>
+{% else %}
+Thanks!
+{% endif %}
+{% endblock %}
