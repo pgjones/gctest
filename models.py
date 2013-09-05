@@ -23,3 +23,10 @@ class Developer(models.Model):
     apps = models.ManyToManyField(App)
     def __unicode__(self):
         return self.name
+
+class News(models.Model):
+    title = models.CharField(max_length=200)
+    link = models.URLField()
+    updated = models.DateTimeField()
+    class Meta:
+        verbose_name_plural = "news"

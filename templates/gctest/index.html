@@ -37,6 +37,17 @@
       </tbody>
     </table>    
   </div>
-  <div class="span4">...</div>
+  <div class="span4">
+    <h3>Latest News</h3>
+    <table class="table table-bordered">
+      <tbody>
+        {% for news in news_list %}
+        <tr>
+          <td><a href="{{ news.link }}">{% autoescape off %}{{ news.title }}{% endautoescape %}</a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
 </div>
 {% endblock %}

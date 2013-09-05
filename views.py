@@ -1,12 +1,14 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import generic
 
-from gctest.models import App, Build, Developer
+from gctest.models import App, Build, Developer, News
 from gctest.forms import AppForm, BuildForm, DeveloperForm
+import gctest.feeds as feeds
 
 from random import sample
 
 def index(request):
+    feeds.pull_feed()
     apps = App.objects.all()
     if apps.count() > 10:
         rand_apps = sample(xrange(1, apps.count()), 10)
@@ -15,9 +17,11 @@ def index(request):
     if developers.count() > 10:
         rand_developers = sample(xrange(1, developers.count()), 10)
         developers = developers.filter(id__in=rand_developers)
+    news = News.objects.order_by('-updated')[:10]
     return render(request, 'gctest/index.html', 
                   {'app_list' : apps,
-                   'developer_list' : developers})
+                   'developer_list' : developers,
+                   'news_list' : news})
 
 class AppListView(generic.ListView):
     template_name = 'gctest/list_app.html'
