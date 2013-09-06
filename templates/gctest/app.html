@@ -27,7 +27,7 @@
 <tbody>
 {% for developer in developer_list %}
 <tr>
-<td>{{ developer }}</td>
+<td><a href="{% url 'developer' developer.pk %}">{{ developer.name }}</a></td>
 </tr>
 {% endfor %}
 </tbody>
